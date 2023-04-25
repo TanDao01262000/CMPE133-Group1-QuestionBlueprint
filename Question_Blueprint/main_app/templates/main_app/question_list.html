@@ -68,4 +68,39 @@
     </div>
   </div>
 </div>
+
+
+{% if sorted_questions.has_other_pages %}
+  <ul class="pagination justify-content-center mt-4">
+    {% if sorted_questions.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ sorted_questions.previous_page_number }}">«</a>
+      </li>
+    {% else %}
+      <li class="page-item disabled">
+        <span class="page-link">«</span>
+      </li>
+    {% endif %}
+    {% for i in sorted_questions.paginator.page_range %}
+      {% if sorted_questions.number == i %}
+        <li class="page-item active">
+          <span class="page-link">{{ i }} <span class="sr-only">(current)</span></span>
+        </li>
+      {% else %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+    {% if sorted_questions.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ sorted_questions.next_page_number }}">»</a>
+      </li>
+    {% else %}
+      <li class="page-item disabled">
+        <span class="page-link">»</span>
+      </li>
+    {% endif %}
+  </ul>
+{% endif %}
 {% endfor %} {% endblock %}
