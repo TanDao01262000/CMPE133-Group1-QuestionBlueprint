@@ -70,6 +70,10 @@
 </div>
 
 
+
+{% endfor %}
+
+
 {% if sorted_questions.has_other_pages %}
   <ul class="pagination justify-content-center mt-4">
     {% if sorted_questions.has_previous %}
@@ -102,5 +106,4 @@
       </li>
     {% endif %}
   </ul>
-{% endif %}
-{% endfor %} {% endblock %}
+{% endif %}{% endblock %}
